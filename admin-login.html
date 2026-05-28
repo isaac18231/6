@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Admin | FHP Fibra</title>
+    <link rel="stylesheet" href="css/sistema-desktop.css">
+</head>
+<body>
+    <main class="auth-shell">
+        <section class="auth-hero">
+            <p class="eyebrow">FHP Fibra</p>
+            <h1>Acesso administrativo</h1>
+            <p class="auth-copy">
+                Area reservada para a equipe acompanhar clientes, solicitacoes e informacoes internas do atendimento.
+            </p>
+
+            <div class="auth-highlights">
+                <div class="highlight-card">
+                    <strong>Gestao de clientes</strong>
+                    <span>Visualize dados e acompanhe demandas cadastradas.</span>
+                </div>
+                <div class="highlight-card">
+                    <strong>Atendimento interno</strong>
+                    <span>Organize solicitacoes e mantenha o suporte atualizado.</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="auth-panel">
+            <form id="admin-form" class="auth-form is-active">
+                <h2>Entrar como admin</h2>
+                <label>
+                    <span>Usuario</span>
+                    <input type="text" name="usuario" placeholder="Usuario admin" required>
+                </label>
+                <label>
+                    <span>E-mail</span>
+                    <input type="email" name="email" placeholder="admin@fhp.com" required>
+                </label>
+                <label>
+                    <span>Senha</span>
+                    <input type="password" name="senha" placeholder="Digite sua senha" required>
+                </label>
+                <button class="button-primary" type="submit">Acessar painel</button>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        const adminForm = document.getElementById("admin-form");
+
+        adminForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const formData = new FormData(adminForm);
+            const adminData = {
+                usuario: String(formData.get("usuario") || "").trim(),
+                email: String(formData.get("email") || "").trim()
+            };
+
+            localStorage.setItem("adminDados", JSON.stringify(adminData));
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
